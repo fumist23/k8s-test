@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-deployment
+  labels:
+   app: sample
+spec:
+  replicas: 3
+  selector:
+   matchLabels:
+    app: sample
+  template:
+   metadata:
+    labels:
+     app: sample
+   spec:
+    containers:
+    - name: sample-app
+      image: asia-northeast1-docker.pkg.dev/satofumi-dev/sample/k8s-test:latest
+      ports:
+      - containerPort: 8080
